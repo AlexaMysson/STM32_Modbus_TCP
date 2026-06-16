@@ -1,0 +1,158 @@
+###############################################################################
+#
+# IAR ELF Linker V7.50.2.10312/W32 for ARM                16/Jun/2026  17:30:54
+# Copyright 2007-2015 IAR Systems AB.
+#
+#    Output file  =  D:\Работа\STM32f746\Release\Exe\c.out
+#    Map file     =  D:\Работа\STM32f746\Release\List\c.map
+#    Command line =  
+#        D:\Работа\STM32f746\Release\Obj\main.o -o
+#        D:\Работа\STM32f746\Release\Exe\c.out --redirect _Printf=_PrintfFull
+#        --redirect _Scanf=_ScanfFull --map
+#        D:\Работа\STM32f746\Release\List\c.map --config
+#        D:\arm\CONFIG\generic_cortex.icf --entry __iar_program_start --inline
+#        --vfe
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A1":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+"P3":  place in [from 0x00000000 to 0x00000000] |
+                [from 0x20000000 to 0x2000ffff] { rw, block CSTACK, block HEAP };
+
+  Section            Kind        Address   Size  Object
+  -------            ----        -------   ----  ------
+"A1":                                      0x40
+  .intvec            ro code  0x00000000   0x40  vector_table_M.o [4]
+                            - 0x00000040   0x40
+
+"P1":                                     0x1c4
+  .text              ro code  0x00000040  0x110  main.o [1]
+  .text              ro code  0x00000150   0x2c  copy_init3.o [4]
+  .text              ro code  0x0000017c   0x28  data_init.o [4]
+  .iar.init_table    const    0x000001a4   0x14  - Linker created -
+  .text              ro code  0x000001b8   0x1a  cmain.o [4]
+  .text              ro code  0x000001d2    0x4  exit.o [3]
+  .text              ro code  0x000001d6    0x2  vector_table_M.o [4]
+  .text              ro code  0x000001d8    0xa  cexit.o [4]
+  .text              ro code  0x000001e4    0xc  XXexit.o [4]
+  .text              ro code  0x000001f0    0xc  cstartup_M.o [4]
+  .rodata            const    0x000001fc    0x0  copy_init3.o [4]
+  Initializer bytes  const    0x000001fc    0x8  <for P3 s0>
+                            - 0x00000204  0x1c4
+
+"P3", part 1 of 2:                          0x8
+  P3 s0                       0x20000000    0x8  <Init block>
+    .data            inited   0x20000000    0x8  main.o [1]
+                            - 0x20000008    0x8
+
+"P3", part 2 of 2:                        0x400
+  CSTACK                      0x20000008  0x400  <Block>
+    CSTACK           uninit   0x20000008  0x400  <Block tail>
+                            - 0x20000408  0x400
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Copy (__iar_copy_init3)
+    1 source range, total size 0x8:
+          0x000001fc   0x8
+    1 destination range, total size 0x8:
+          0x20000000   0x8
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+D:\Работа\STM32f746\Release\Obj: [1]
+    main.o                272        8        8
+    -------------------------------------------
+    Total:                272        8        8
+
+command line: [2]
+    -------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    exit.o                  4
+    -------------------------------------------
+    Total:                  4
+
+rt7M_tl.a: [4]
+    XXexit.o               12
+    cexit.o                10
+    cmain.o                26
+    copy_init3.o           44
+    cstartup_M.o           12
+    data_init.o            40
+    vector_table_M.o       66
+    -------------------------------------------
+    Total:                210
+
+    Gaps                    2
+    Linker created                  20    1 024
+-----------------------------------------------
+    Grand Total:          488       28    1 032
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address  Size  Type      Object
+-----                      -------  ----  ----      ------
+.iar.init_table$$Base   0x000001a4         --   Gb  - Linker created -
+.iar.init_table$$Limit  0x000001b8         --   Gb  - Linker created -
+?main                   0x000001b9        Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000008         --   Gb  - Linker created -
+CSTACK$$Limit           0x20000408         --   Gb  - Linker created -
+GPIOD                   0x20000004   0x4  Data  Gb  main.o [1]
+LED_Init                0x000000e5  0x34  Code  Gb  main.o [1]
+RCC                     0x20000000   0x4  Data  Gb  main.o [1]
+Region$$Table$$Base     0x000001a4         --   Gb  - Linker created -
+Region$$Table$$Limit    0x000001b8         --   Gb  - Linker created -
+SystemInit              0x00000041  0xa4  Code  Gb  main.o [1]
+__cmain                 0x000001b9        Code  Gb  cmain.o [4]
+__exit                  0x000001e5        Code  Gb  XXexit.o [4]
+__iar_copy_init3        0x00000151  0x2c  Code  Gb  copy_init3.o [4]
+__iar_data_init3        0x0000017d  0x28  Code  Gb  data_init.o [4]
+__iar_program_start     0x000001f1        Code  Gb  cstartup_M.o [4]
+__vector_table          0x00000000        Data  Gb  vector_table_M.o [4]
+_call_main              0x000001c5        Code  Gb  cmain.o [4]
+_exit                   0x000001d9        Code  Gb  cexit.o [4]
+_main                   0x000001cf        Code  Gb  cmain.o [4]
+exit                    0x000001d3   0x4  Code  Gb  exit.o [3]
+main                    0x00000119  0x2e  Code  Gb  main.o [1]
+
+
+[1] = D:\Работа\STM32f746\Release\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = rt7M_tl.a
+
+    488 bytes of readonly  code memory
+     28 bytes of readonly  data memory
+  1 032 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

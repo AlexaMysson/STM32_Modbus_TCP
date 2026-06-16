@@ -1,0 +1,15 @@
+"D:\arm\bin\armproc.dll" 
+
+"D:\arm\bin\armstlink2.dll" 
+
+"D:\Работа\STM32f746\main.c" 
+
+--plugin "D:\arm\bin\armbat.dll" 
+
+--device_macro "D:\arm\config\debugger\ST\STM32F7xx.dmac" 
+
+--flash_loader "D:\arm\config\flashloader\ST\FlashSTM32F756xG.board" 
+
+
+
+

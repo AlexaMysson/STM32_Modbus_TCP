@@ -104,6 +104,10 @@
       </outputs>
       <inputs>
         <tool>
+          <name>BICOMP</name>
+          <file> 7 3 0 6 1 2 16 4 5</file>
+        </tool>
+        <tool>
           <name>ICCARM</name>
           <file> 16 6 7 4 1 2 0 3 5</file>
         </tool>
