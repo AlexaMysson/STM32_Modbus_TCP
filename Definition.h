@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 /*                              RCC registers                                   */
 typedef struct {
   struct type_CR          /*!< RCC clock control register,        Address offset: 0x00 */ 
@@ -189,7 +191,7 @@ typedef struct {
     int LSEON:1;
     int LSERDY:1;
     int LSEBYP:1;
-    int LSEDRV:1;    
+    int LSEDRV:2;    
     int reserve:3;
     int RTCSEL:2;
     int reserve1:5;
@@ -482,7 +484,7 @@ typedef struct
      
     struct type_MACHTLR
     {
-      int SBK:32;
+      int HTL:32;
      }x_MACHTLR; /*!< Ethernet MAC hash table low register,   Address offset: 0x0C */
      
     struct type_MACMIIAR
@@ -499,7 +501,7 @@ typedef struct
     {
       int MD:16;
       int reserve0:16;
-     }x_MACMIIDR;  /*!< Ethernet MAC MII data register,   Address offset: 0x14 */
+     }MACMIIDR;  /*!< Ethernet MAC MII data register,   Address offset: 0x14 */
 
      struct type_MACFCR
   {
@@ -618,12 +620,12 @@ typedef struct
 
    struct type_MACA3HR
   {
-    int MACA2H:16;
+    int MACA3H:16;
     int reserve0:8;     
     int MBC:6;
     int SA:1;
     int AE:1;            
-   }_MACA3HR; /*!< ,   Address offset: 0x58 */    
+   }MACA3HR; /*!< ,   Address offset: 0x58 */    
       
    struct type_MACA3LR
   {
@@ -818,7 +820,7 @@ typedef struct
    
    struct type_DMATPDR
   {
-    int TPR:32;     
+    int TPD:32;     
    }DMATPDR; /*!< ,   Address offset: 0x1004*/    
 
    struct type_DMARPDR
@@ -828,14 +830,15 @@ typedef struct
    
    struct type_DMARDLAR
   {
-    int SRL:32;     
+    uint32_t RDL:32;     
    }DMARDLAR; /*!< ,   Address offset: 0x100C*/     
    
    struct type_DMATDLAR
   {
-    int SRL:32;     
+    uint32_t TDL:32;     
    }DMATDLAR; /*!< ,   Address offset: 0x1010*/   
    
+//    uint32_t DMASR; 
    struct type_DMASR
   {
     int TS:1;     
@@ -863,7 +866,7 @@ typedef struct
     int TSTS:1;     
     int reserve2:2; 
    }DMASR; /*!< ,   Address offset: 0x1014*/    
-   
+    
    struct type_DMAOMR
   {
     int reserve0:1;     
@@ -945,3 +948,63 @@ typedef struct
    }DMACHRBAR; /*!< ,   Address offset: 0x1054*/  
    
 }ETHERNET_Type;
+
+/*==========================
+      FLASH registers
+==========================*/
+
+typedef struct
+{
+    struct type_ACR
+    {
+        unsigned int LATENCY :4;   // Flash wait states
+        unsigned int reserve0:4;
+
+        unsigned int PRFTEN  :1;   // Prefetch enable
+        unsigned int ICEN    :1;   // Instruction cache enable
+        unsigned int DCEN    :1;   // Data cache enable
+
+        unsigned int ICRST   :1;   // Instruction cache reset
+        unsigned int DCRST   :1;   // Data cache reset
+
+        unsigned int reserve1:19;
+    } ACR;                         /*!< Address offset: 0x00 */
+
+    uint32_t KEYR;                 /*!< Address offset: 0x04 */
+    uint32_t OPTKEYR;              /*!< Address offset: 0x08 */
+
+    struct type_SR
+    {
+        unsigned int EOP      :1;
+        unsigned int OPERR    :1;
+        unsigned int reserve0 :2;
+        unsigned int WRPERR   :1;
+        unsigned int PGAERR   :1;
+        unsigned int PGPERR   :1;
+        unsigned int PGSERR   :1;
+        unsigned int reserve1 :8;
+        unsigned int BSY      :1;
+        unsigned int reserve2 :15;
+    } SR;                          /*!< Address offset: 0x0C */
+
+    struct type_FLASH_CR
+    {
+        unsigned int PG       :1;
+        unsigned int SER      :1;
+        unsigned int MER      :1;
+        unsigned int SNB      :4;
+        unsigned int PSIZE    :2;
+        unsigned int reserve0 :5;
+        unsigned int STRT     :1;
+        unsigned int reserve1 :7;
+        unsigned int EOPIE    :1;
+        unsigned int ERRIE    :1;
+        unsigned int LOCK     :1;
+        unsigned int reserve2 :5;
+    } CR;                          /*!< Address offset: 0x10 */
+
+    uint32_t OPTCR;                /*!< Address offset: 0x14 */
+
+    uint32_t OPTCR1;               /*!< Address offset: 0x18 */
+
+} FLASH_Type;
