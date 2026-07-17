@@ -334,7 +334,7 @@
         </option>
         <option>
           <name>CCOptLevel</name>
-          <state>1</state>
+          <state>0</state>
         </option>
         <option>
           <name>CCOptStrategy</name>
@@ -343,7 +343,7 @@
         </option>
         <option>
           <name>CCOptLevelSlave</name>
-          <state>1</state>
+          <state>0</state>
         </option>
         <option>
           <name>CompilerMisraRules98</name>
@@ -1916,7 +1916,19 @@
     <name>$PROJ_DIR$\Definition.h</name>
   </file>
   <file>
+    <name>$PROJ_DIR$\ethernet.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\Ethernet.h</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\main.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\phy.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\phy.h</name>
   </file>
 </project>
 

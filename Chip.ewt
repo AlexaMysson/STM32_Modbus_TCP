@@ -2098,7 +2098,19 @@
     <name>$PROJ_DIR$\Definition.h</name>
   </file>
   <file>
+    <name>$PROJ_DIR$\ethernet.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\ethernet.h</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\main.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\phy.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\phy.h</name>
   </file>
 </project>
 
